@@ -49,6 +49,23 @@ export default makeStyles((theme) => ({
     },
   },
 
+  itemWrapper: {
+    '&:hover': {
+      textShadow: '0px 0px 1px rgba(0,0,0,1)',
+    },
+  },
+
+  menuItem: {
+    // padding: '0 10px',
+    textDecoration: 'none',
+    color: '#1c1c1c',
+    transition: 'all 0.5s ease',
+
+    '&:active, &:hover': {
+      textShadow: '0px 0px 1px rgba(0,0,0,1)',
+    },
+  },
+
   searchIcon: {
     padding: theme.spacing(0, 2),
     height: '100%',

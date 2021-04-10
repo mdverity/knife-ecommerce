@@ -2,17 +2,26 @@ import React from 'react'
 import {
   AppBar,
   Toolbar,
-  IconButton,
+  Hidden,
   Badge,
-  //   MenuItem,
-  //   Menu,
+  IconButton,
+  MenuItem,
   Typography,
+  Container,
 } from '@material-ui/core'
 import { ShoppingCart } from '@material-ui/icons'
-import { Link, useLocation } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 
 import logo from '../../assets/logo.png'
 import useStyles from './styles'
+import MobileMenu from '../MobileMenu/MobileMenu'
+
+const navLinks = [
+  { title: `Shop`, path: `/store` },
+  { title: `Home`, path: `/` },
+  { title: `About`, path: `/about` },
+  { title: `Contact`, path: `/contact` },
+]
 
 const Navbar = ({ totalItems }) => {
   const classes = useStyles()
@@ -21,38 +30,57 @@ const Navbar = ({ totalItems }) => {
   return (
     <>
       <AppBar position='fixed' className={classes.appBar} color='inherit'>
-        <Toolbar>
-          <Typography
-            component={Link}
-            to='/'
-            variant='h6'
-            className={classes.title}
-            color='inherit'
-          >
-            <img
-              src={logo}
-              alt='Knifty Logo'
-              height='25px'
-              className={classes.image}
-            />
-            Knifty
-          </Typography>
-          <div className={classes.grow} />
-          {location.pathname === '/' && (
-            <div className={classes.button}>
-              <IconButton
-                component={Link}
-                to='/cart'
-                aria-label='Show cart items'
-                color='inherit'
-              >
-                <Badge badgeContent={totalItems} color='secondary'>
-                  <ShoppingCart />
-                </Badge>
-              </IconButton>
-            </div>
-          )}
-        </Toolbar>
+        <Container maxWidth='lg'>
+          <Toolbar>
+            <Typography
+              component={NavLink}
+              to='/'
+              className={classes.title}
+              color='inherit'
+            >
+              <img
+                src={logo}
+                alt='Knifty Logo'
+                height='25px'
+                className={classes.image}
+              />
+            </Typography>
+            <div className={classes.grow} />
+
+            <Hidden xsDown>
+              {navLinks.map(({ title, path }) => (
+                <MenuItem key={title}>
+                  <Typography
+                    component={NavLink}
+                    to={path}
+                    className={classes.menuItem}
+                  >
+                    {title}
+                  </Typography>
+                </MenuItem>
+              ))}
+            </Hidden>
+
+            <Hidden smUp>
+              <MobileMenu navLinks={navLinks} />
+            </Hidden>
+
+            {location.pathname === '/store' && (
+              <div className={classes.button}>
+                <IconButton
+                  component={NavLink}
+                  to='/cart'
+                  aria-label='Show cart items'
+                  color='inherit'
+                >
+                  <Badge badgeContent={totalItems} color='primary'>
+                    <ShoppingCart />
+                  </Badge>
+                </IconButton>
+              </div>
+            )}
+          </Toolbar>
+        </Container>
       </AppBar>
     </>
   )

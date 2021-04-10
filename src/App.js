@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { commerce } from './lib/commerce'
-import { Products, Navbar, Cart, Checkout } from './components'
+import { CssBaseline } from '@material-ui/core'
+import {
+  Products,
+  Navbar,
+  Cart,
+  Checkout,
+  Home,
+  About,
+  Contact,
+} from './components'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 const App = () => {
+  const [mobileOpen, setMobileOpen] = useState(false)
   const [products, setProducts] = useState([])
   const [cart, setCart] = useState({})
   const [order, setOrder] = useState({})
@@ -69,13 +79,29 @@ const App = () => {
     fetchCart()
   }, [])
 
-  // console.log(cart)
+  const handleDrawerToggle = () => setMobileOpen(!mobileOpen)
 
   return (
     <Router>
-      <Navbar totalItems={cart.total_items} />
+      <CssBaseline />
+      <Navbar
+        totalItems={cart.total_items}
+        handleDrawerToggle={handleDrawerToggle}
+      />
       <Switch>
         <Route exact path='/'>
+          <Home />
+        </Route>
+
+        <Route path='/about'>
+          <About />
+        </Route>
+
+        <Route path='/contact'>
+          <Contact />
+        </Route>
+
+        <Route exact path='/store'>
           <Products products={products} onAddToCart={handleAddToCart} />
         </Route>
 
