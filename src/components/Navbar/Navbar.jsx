@@ -31,11 +31,11 @@ const Navbar = ({ totalItems }) => {
           >
             <img
               src={logo}
-              alt='Knifeland Logo'
+              alt='Knifty Logo'
               height='25px'
               className={classes.image}
             />
-            Knifeland
+            Knifty
           </Typography>
           <div className={classes.grow} />
           {location.pathname === '/' && (

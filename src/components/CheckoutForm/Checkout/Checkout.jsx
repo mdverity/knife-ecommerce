@@ -1,4 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { commerce } from '../../../lib/commerce'
+import useStyles from './styles'
+import AddressForm from '../AddressForm'
+import PaymentForm from '../PaymentForm'
 import {
   Paper,
   Stepper,
@@ -8,23 +13,117 @@ import {
   CircularProgress,
   Divider,
   Button,
+  CssBaseline,
 } from '@material-ui/core'
-import useStyles from './styles'
-import AddressForm from '../AddressForm'
-import PaymentForm from '../PaymentForm'
 
 const steps = ['Shipping Address', 'Payment Details']
 
-const Checkout = () => {
+const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
   const [activeStep, setActiveStep] = useState(0)
+  const [checkoutToken, setCheckoutToken] = useState(null)
+  const [shippingData, setShippingData] = useState({})
+  const [isFinished, setIsFinished] = useState(false)
   const classes = useStyles()
+  const history = useHistory()
 
-  const Confirmation = () => <div>Confirmation</div>
+  useEffect(() => {
+    const generateToken = async () => {
+      try {
+        const token = await commerce.checkout.generateToken(cart.id, {
+          type: 'cart',
+        })
 
-  const Form = () => (activeStep === 0 ? <AddressForm /> : <PaymentForm />)
+        // console.log(token)
+        setCheckoutToken(token)
+      } catch (error) {
+        // console.log(error)
+        if (activeStep !== steps.length) history.push('/')
+      }
+    }
+
+    generateToken()
+  }, [cart.id, history, activeStep])
+
+  const nextStep = () => setActiveStep((prev) => prev + 1)
+  const prevStep = () => setActiveStep((prev) => prev - 1)
+
+  const next = (data) => {
+    setShippingData(data)
+    nextStep()
+  }
+
+  const timeout = () => {
+    setTimeout(() => {
+      setIsFinished(true)
+    }, 3000)
+  }
+
+  let Confirmation = () =>
+    order.customer ? (
+      <>
+        <div>
+          <Typography variant='h5'>
+            Thank you for your purchase, {order.customer.firstname}.
+          </Typography>
+          <Divider className={classes.divider} />
+          <Typography variant='subtitle2'>
+            Order number: {order.customer_reference}
+          </Typography>
+        </div>
+        <br />
+        <Button component={Link} to='/' variant='outlined' type='button'>
+          Back to Home
+        </Button>
+      </>
+    ) : isFinished ? (
+      <>
+        <div>
+          <Typography variant='h5'>
+            Thank you for your (real) purchase!
+          </Typography>
+          <Divider className={classes.divider} />
+        </div>
+        <br />
+        <Button component={Link} to='/' variant='outlined' type='button'>
+          Back to Home
+        </Button>
+      </>
+    ) : (
+      <div className={classes.spinner}>
+        <CircularProgress />
+      </div>
+    )
+
+  if (error) {
+    Confirmation = () => (
+      <>
+        <Typography variant='h5'>Looks like we ran into an error.</Typography>
+        <Typography variant='h6'>{error}.</Typography>
+        <br />
+        <Button component={Link} variant='outlined' type='button' to='/'>
+          Back to home
+        </Button>
+      </>
+    )
+  }
+
+  const Form = () =>
+    activeStep === 0 ? (
+      <AddressForm checkoutToken={checkoutToken} next={next} />
+    ) : (
+      <PaymentForm
+        shippingData={shippingData}
+        checkoutToken={checkoutToken}
+        prevStep={prevStep}
+        onCaptureCheckout={onCaptureCheckout}
+        nextStep={nextStep}
+        timeout={timeout}
+      />
+    )
 
   return (
     <>
+      <CssBaseline />
       <div className={classes.toolbar} />
       <main className={classes.layout}>
         <Paper className={classes.paper}>
@@ -38,7 +137,11 @@ const Checkout = () => {
               </Step>
             ))}
           </Stepper>
-          {activeStep === steps.length ? <Confirmation /> : <Form />}
+          {activeStep === steps.length ? (
+            <Confirmation />
+          ) : (
+            checkoutToken && <Form />
+          )}
         </Paper>
       </main>
     </>
