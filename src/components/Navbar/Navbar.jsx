@@ -30,7 +30,7 @@ const Navbar = ({ totalItems }) => {
   return (
     <>
       <AppBar position='fixed' className={classes.appBar} color='inherit'>
-        <Container maxWidth='lg'>
+        <Container maxWidth='xl'>
           <Toolbar>
             <Typography
               component={NavLink}
@@ -41,30 +41,11 @@ const Navbar = ({ totalItems }) => {
               <img
                 src={logo}
                 alt='Knifty Logo'
-                height='25px'
+                height='60px'
                 className={classes.image}
               />
             </Typography>
             <div className={classes.grow} />
-
-            <Hidden xsDown>
-              {navLinks.map(({ title, path }) => (
-                <MenuItem key={title}>
-                  <Typography
-                    component={NavLink}
-                    to={path}
-                    className={classes.menuItem}
-                  >
-                    {title}
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Hidden>
-
-            <Hidden smUp>
-              <MobileMenu navLinks={navLinks} />
-            </Hidden>
-
             {location.pathname === '/store' && (
               <div className={classes.button}>
                 <IconButton
@@ -79,6 +60,28 @@ const Navbar = ({ totalItems }) => {
                 </IconButton>
               </div>
             )}
+            <Hidden smDown>
+              {navLinks.map(({ title, path }) => (
+                <MenuItem key={title} className={classes.menuItem}>
+                  <Typography
+                    component={NavLink}
+                    exact
+                    to={path}
+                    className={classes.menuItemText}
+                    activeStyle={{
+                      textShadow:
+                        '0px 0px 2px rgba(29, 40, 42, 1), 0px 0px 1px rgba(29, 40, 42, 1)',
+                    }}
+                  >
+                    {title}
+                  </Typography>
+                </MenuItem>
+              ))}
+            </Hidden>
+
+            <Hidden mdUp>
+              <MobileMenu navLinks={navLinks} />
+            </Hidden>
           </Toolbar>
         </Container>
       </AppBar>

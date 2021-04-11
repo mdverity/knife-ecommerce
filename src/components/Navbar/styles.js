@@ -4,8 +4,9 @@ const drawerWidth = 0
 
 export default makeStyles((theme) => ({
   appBar: {
+    background: 'transparent',
     boxShadow: 'none',
-    borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+    // borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
@@ -13,10 +14,17 @@ export default makeStyles((theme) => ({
   },
 
   title: {
-    flexGrow: 1,
+    // flexGrow: 1,
     alignItems: 'center',
     display: 'flex',
     textDecoration: 'none',
+    // padding: '6px',
+    paddingLeft: '10px',
+    paddingRight: 0,
+    marginTop: '2px',
+    background: 'rgba(218, 236, 231, 0.75)',
+    borderRadius: '20px',
+    // boxShadow: '-15px 0px 25px -5px #DAECE7',
   },
 
   image: {
@@ -49,21 +57,25 @@ export default makeStyles((theme) => ({
     },
   },
 
-  itemWrapper: {
-    '&:hover': {
-      textShadow: '0px 0px 1px rgba(0,0,0,1)',
+  menuItem: {
+    background: 'rgba(218, 236, 231,0.75)',
+    marginLeft: '5px',
+
+    '&:active, &:hover': {
+      background: 'rgba(29, 40, 42, 0.75)',
+      '& *': {
+        color: '#DAECE7',
+        textShadow: '0px 0px 1px rgba(29, 40, 42, 1)',
+      },
     },
   },
 
-  menuItem: {
+  menuItemText: {
     // padding: '0 10px',
     textDecoration: 'none',
-    color: '#1c1c1c',
+    fontWeight: '500',
+    color: '#1D282A',
     transition: 'all 0.5s ease',
-
-    '&:active, &:hover': {
-      textShadow: '0px 0px 1px rgba(0,0,0,1)',
-    },
   },
 
   searchIcon: {

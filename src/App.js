@@ -11,6 +11,13 @@ import {
   Contact,
 } from './components'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: ['Montserrat', 'sans-serif'].join(','),
+  },
+})
 
 const App = () => {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -83,46 +90,48 @@ const App = () => {
 
   return (
     <Router>
-      <CssBaseline />
-      <Navbar
-        totalItems={cart.total_items}
-        handleDrawerToggle={handleDrawerToggle}
-      />
-      <Switch>
-        <Route exact path='/'>
-          <Home />
-        </Route>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Navbar
+          totalItems={cart.total_items}
+          handleDrawerToggle={handleDrawerToggle}
+        />
+        <Switch>
+          <Route exact path='/'>
+            <Home />
+          </Route>
 
-        <Route path='/about'>
-          <About />
-        </Route>
+          <Route path='/about'>
+            <About />
+          </Route>
 
-        <Route path='/contact'>
-          <Contact />
-        </Route>
+          <Route path='/contact'>
+            <Contact />
+          </Route>
 
-        <Route exact path='/store'>
-          <Products products={products} onAddToCart={handleAddToCart} />
-        </Route>
+          <Route exact path='/store'>
+            <Products products={products} onAddToCart={handleAddToCart} />
+          </Route>
 
-        <Route exact path='/cart'>
-          <Cart
-            cart={cart}
-            handleUpdateCartQty={handleUpdateCartQty}
-            handleRemoveFromCart={handleRemoveFromCart}
-            handleEmptyCart={handleEmptyCart}
-          />
-        </Route>
+          <Route exact path='/cart'>
+            <Cart
+              cart={cart}
+              handleUpdateCartQty={handleUpdateCartQty}
+              handleRemoveFromCart={handleRemoveFromCart}
+              handleEmptyCart={handleEmptyCart}
+            />
+          </Route>
 
-        <Route exact path='/checkout'>
-          <Checkout
-            cart={cart}
-            order={order}
-            onCaptureCheckout={handleCaptureCheckout}
-            error={errorMessage}
-          />
-        </Route>
-      </Switch>
+          <Route exact path='/checkout'>
+            <Checkout
+              cart={cart}
+              order={order}
+              onCaptureCheckout={handleCaptureCheckout}
+              error={errorMessage}
+            />
+          </Route>
+        </Switch>
+      </ThemeProvider>
     </Router>
   )
 }

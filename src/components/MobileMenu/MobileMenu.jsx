@@ -48,8 +48,9 @@ const MobileMenu = ({ navLinks }) => {
         edge='start'
         aria-label='menu'
         onClick={toggleDrawer('right', true)}
+        style={{ background: 'rgba(218, 236, 231,0.75)' }}
       >
-        <MenuIcon />
+        <MenuIcon style={{ color: '#1D282A' }} />
       </IconButton>
       <Drawer
         anchor='right'
