@@ -10,14 +10,49 @@ import {
   About,
   Contact,
 } from './components'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useLocation,
+} from 'react-router-dom'
+import {
+  ThemeProvider,
+  createMuiTheme,
+  responsiveFontSizes,
+} from '@material-ui/core/styles'
 
-const theme = createMuiTheme({
+let theme = createMuiTheme({
   typography: {
     fontFamily: ['Montserrat', 'sans-serif'].join(','),
   },
+  palette: {
+    primary: {
+      // light: will be calculated from palette.primary.main,
+      main: '#DAECE7',
+      // dark: will be calculated from palette.primary.main,
+      // contrastText: will be calculated to contrast with palette.primary.main
+    },
+    secondary: {
+      // light: will be calculated from palette.secondary.main,
+      main: '#1D282A',
+      // dark: will be calculated from palette.secondary.main,
+      // contrastText: will be calculated to contrast with palette.secondary.main
+    },
+  },
 })
+
+theme = responsiveFontSizes(theme)
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
 
 const App = () => {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -90,6 +125,7 @@ const App = () => {
 
   return (
     <Router>
+      <ScrollToTop />
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Navbar
@@ -98,7 +134,7 @@ const App = () => {
         />
         <Switch>
           <Route exact path='/'>
-            <Home />
+            <Home products={products} />
           </Route>
 
           <Route path='/about'>

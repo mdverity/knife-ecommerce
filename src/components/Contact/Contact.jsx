@@ -1,5 +1,6 @@
 import React from 'react'
 import useStyles from './styles'
+import { Container, Typography } from '@material-ui/core'
 
 const Contact = () => {
   const classes = useStyles()
@@ -7,7 +8,9 @@ const Contact = () => {
   return (
     <main className={classes.content}>
       <div className={classes.toolbar} />
-      <h1>Contact Page</h1>
+      <Container>
+        <Typography variant='h2'>Contact Page</Typography>
+      </Container>
     </main>
   )
 }

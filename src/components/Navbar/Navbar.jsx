@@ -54,8 +54,8 @@ const Navbar = ({ totalItems }) => {
                   aria-label='Show cart items'
                   color='inherit'
                 >
-                  <Badge badgeContent={totalItems} color='primary'>
-                    <ShoppingCart />
+                  <Badge badgeContent={totalItems} color='error'>
+                    <ShoppingCart style={{ color: '#1D282A' }} />
                   </Badge>
                 </IconButton>
               </div>

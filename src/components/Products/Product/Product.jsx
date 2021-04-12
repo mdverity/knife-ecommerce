@@ -35,7 +35,7 @@ const Product = ({ product, onAddToCart }) => {
 
   const productImages = product.assets.map((item) => item.url)
 
-  console.log(productImages)
+  // console.log(productImages)
   // return <div>test</div>
 
   return (
@@ -61,7 +61,8 @@ const Product = ({ product, onAddToCart }) => {
           <Typography
             dangerouslySetInnerHTML={{ __html: product.description }}
             variant='body2'
-            color='textSecondary'
+            color='secondary'
+            style={{ opacity: '0.95' }}
           >
             {/* {product.description.slice(3, 101) + '...'} */}
           </Typography>
@@ -106,7 +107,7 @@ const Product = ({ product, onAddToCart }) => {
         <Carousel autoPlay={false}>
           {productImages.map((item, i) => (
             <img
-              // key={product.name + i}
+              key={product.name}
               className={classes.modalImage}
               src={item}
               alt={product.name}

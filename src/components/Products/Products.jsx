@@ -9,6 +9,7 @@ const Products = ({ products, onAddToCart }) => {
   return (
     <main className={classes.content}>
       <div className={classes.toolbar} />
+      {/* <Grid container fluid style={{padding: '0'}}></Grid> */}
       <Container>
         <Grid container justify='center' spacing={4}>
           {products.map((product) => (

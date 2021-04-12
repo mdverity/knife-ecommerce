@@ -18,13 +18,13 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
     display: 'flex',
     textDecoration: 'none',
-    // padding: '6px',
+    marginTop: '-5px',
+    paddingTop: '5px',
     paddingLeft: '10px',
-    paddingRight: 0,
-    marginTop: '2px',
+    padding: 0,
     background: 'rgba(218, 236, 231, 0.75)',
-    borderRadius: '20px',
-    // boxShadow: '-15px 0px 25px -5px #DAECE7',
+    borderRadius: '1px',
+    boxShadow: '0px 0px 3px 2px rgba(218, 236, 231, 0.75)',
   },
 
   image: {
@@ -59,6 +59,7 @@ export default makeStyles((theme) => ({
 
   menuItem: {
     background: 'rgba(218, 236, 231,0.75)',
+    borderRadius: '2px',
     marginLeft: '5px',
 
     '&:active, &:hover': {
@@ -71,7 +72,6 @@ export default makeStyles((theme) => ({
   },
 
   menuItemText: {
-    // padding: '0 10px',
     textDecoration: 'none',
     fontWeight: '500',
     color: '#1D282A',
