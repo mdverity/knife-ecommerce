@@ -10,6 +10,7 @@ export default makeStyles((theme) => ({
   footerList: {
     [theme.breakpoints.down('sm')]: {
       textAlign: 'center',
+      fontSize: '12px',
     },
     [theme.breakpoints.up('md')]: {
       textAlign: 'left',

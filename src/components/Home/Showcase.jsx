@@ -41,7 +41,11 @@ const Showcase = () => {
                 padding: '2rem 1rem',
               }}
             >
-              <Typography variant='body1' color='primary'>
+              <Typography
+                variant='body1'
+                color='primary'
+                className={classes.showcaseText}
+              >
                 We source only the highest quality aogami steel from the most
                 reputable vendors.
               </Typography>
@@ -56,7 +60,11 @@ const Showcase = () => {
                 }}
               />
 
-              <Typography variant='body1' color='primary'>
+              <Typography
+                variant='body1'
+                color='primary'
+                className={classes.showcaseText}
+              >
                 All of our knives are hand crafted in Japan, made by a true
                 master of their craft.
               </Typography>
@@ -71,7 +79,11 @@ const Showcase = () => {
                 }}
               />
 
-              <Typography variant='body1' color='primary'>
+              <Typography
+                variant='body1'
+                color='primary'
+                className={classes.showcaseText}
+              >
                 With a 60-day money back guarantee, there’s no risk to try the
                 best knife of your life.
               </Typography>

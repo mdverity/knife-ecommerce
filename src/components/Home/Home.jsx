@@ -3,7 +3,6 @@ import useStyles from './styles'
 import { Grid } from '@material-ui/core'
 import Hero from './Hero'
 import Showcase from './Showcase'
-import Footer from '../Footer/Footer'
 
 import HomeCarousel from './HomeCarousel'
 
@@ -19,8 +18,6 @@ const Home = ({ products }) => {
         <HomeCarousel products={products} />
 
         <Showcase />
-
-        <Footer products={products} />
       </Grid>
     </main>
   )

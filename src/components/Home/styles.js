@@ -16,24 +16,31 @@ export default makeStyles((theme) => ({
   },
 
   heroImage: {
-    height: '100vh',
     background: `radial-gradient(44.95% 44.95% at 72.73% 66.41%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.35) 100%), url(${heroImage})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'left',
+
+    [theme.breakpoints.down('sm')]: {
+      height: '66.6vh',
+    },
+    [theme.breakpoints.up('md')]: {
+      height: '100vh',
+    },
   },
 
   showcaseImage: {
-    height: '100vh',
     backgroundImage: `radial-gradient(34.41% 36.02% at 53.67% 57.09%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.35) 100%), url(${showcaseImage})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
 
     [theme.breakpoints.down('sm')]: {
       backgroundPosition: 'center',
+      height: '65vh',
     },
     [theme.breakpoints.up('md')]: {
       backgroundPosition: 'right',
+      height: '100vh',
     },
   },
 
@@ -72,16 +79,17 @@ export default makeStyles((theme) => ({
 
   heroTitleLight: {
     position: 'absolute',
-    left: '10%',
-    top: '10%',
     opacity: '0.5',
     fontWeight: '400',
 
     [theme.breakpoints.down('xs')]: {
       left: '2%',
+      top: '6%',
+      fontSize: '26px',
     },
     [theme.breakpoints.up('sm')]: {
       left: '5%',
+      top: '12%',
     },
   },
 
@@ -92,41 +100,54 @@ export default makeStyles((theme) => ({
 
     [theme.breakpoints.down('xs')]: {
       left: '2.5%',
-      top: '22%',
+      top: '19%',
+      fontSize: '26px',
     },
     [theme.breakpoints.up('sm')]: {
       left: '5%',
-      top: '19%',
+      top: '21%',
     },
   },
 
   heroTitleDarkTwo: {
     position: 'absolute',
     fontWeight: '400',
+    top: '30%',
 
     [theme.breakpoints.down('xs')]: {
       left: '10%',
-      top: '33%',
+      fontSize: '26px',
     },
     [theme.breakpoints.up('sm')]: {
       left: '19.5%',
-      top: '28%',
     },
   },
 
   subTextLight: {
     opacity: '0.5',
     fontWeight: '300',
+
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '18px',
+    },
   },
 
   subTextDark: {
     fontWeight: '300',
     marginBottom: '1rem',
+    whiteSpace: 'nowrap',
+
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '18px',
+    },
   },
 
   headerTextWrap: {
     paddingRight: '20px',
-    marginTop: '7.5rem',
+
+    [theme.breakpoints.down('sm')]: {
+      marginTop: '2.5rem',
+    },
   },
 
   topHeaderWrap: {
@@ -160,6 +181,14 @@ export default makeStyles((theme) => ({
     '&:hover': {
       transform: 'scale(1.1)',
     },
+
+    [theme.breakpoints.down('xs')]: {
+      width: '300px',
+    },
+
+    [theme.breakpoints.up('sm')]: {
+      width: '600px',
+    },
   },
 
   cardContent: {
@@ -167,5 +196,11 @@ export default makeStyles((theme) => ({
     zIndex: '3',
     background: 'rgba(29, 40, 42, 0.5)',
     width: '100%',
+  },
+
+  showcaseText: {
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '14px',
+    },
   },
 }))

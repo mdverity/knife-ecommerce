@@ -65,7 +65,7 @@ const Footer = ({ products }) => {
           style={{ height: 'fit-content', padding: '10px' }}
         >
           <Grid container direction='column' className={classes.footerList}>
-            <Typography variant='h5' color='primary'>
+            <Typography variant='h6' color='primary'>
               Navigation
             </Typography>
             <Link to='/store' className={classes.footerLink}>
@@ -89,7 +89,7 @@ const Footer = ({ products }) => {
           style={{ height: 'fit-content', padding: '10px' }}
         >
           <Grid container direction='column' className={classes.footerList}>
-            <Typography variant='h5' color='primary'>
+            <Typography variant='h6' color='primary'>
               Latest Products
             </Typography>
             {products.slice(0, 4).map((product, index) => (
@@ -101,7 +101,7 @@ const Footer = ({ products }) => {
         </Grid>
         <Grid item xs={10} md={3} className={classes.tweetBox}>
           <Grid container direction='column'>
-            <Typography variant='h5' color='primary'>
+            <Typography variant='h6' color='primary'>
               Latest Tweets
             </Typography>
             <br />

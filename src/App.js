@@ -21,6 +21,7 @@ import {
   createMuiTheme,
   responsiveFontSizes,
 } from '@material-ui/core/styles'
+import Footer from './components/Footer/Footer'
 
 let theme = createMuiTheme({
   typography: {
@@ -138,7 +139,7 @@ const App = () => {
           </Route>
 
           <Route path='/about'>
-            <About />
+            <About products />
           </Route>
 
           <Route path='/contact'>
@@ -167,6 +168,7 @@ const App = () => {
             />
           </Route>
         </Switch>
+        <Footer products={products} />
       </ThemeProvider>
     </Router>
   )
