@@ -8,6 +8,7 @@ import {
   Hidden,
   Container,
   Typography,
+  Paper,
 } from '@material-ui/core'
 
 import Carousel from 'react-material-ui-carousel'
@@ -34,7 +35,7 @@ const HomeCarousel = ({ products }) => {
           display: 'flex',
           minHeight: '80vh',
           background: '#e9e9e9',
-          // boxShadow: 'inset 0px 4px 100px 20px rgba(0, 0, 0, 0.25)',
+          boxShadow: 'inset 0px 4px 100px 20px rgba(0, 0, 0, 0.25)',
           paddingBottom: '1rem',
           alignItems: 'center',
         }}
@@ -55,112 +56,118 @@ const HomeCarousel = ({ products }) => {
           >
             Latest Products
           </Typography>
-          <Carousel indicators={false} navButtonsAlwaysVisible={true}>
-            <Grid container>
-              <Hidden smDown>
-                <Grid item md={4} component={Card} className={classes.card}>
-                  <CardContent className={classes.cardContent}>
-                    <Typography variant='h6'>{product1?.name}</Typography>
-                  </CardContent>
-                  <CardMedia
-                    component={Link}
-                    to='/store'
-                    className={classes.media}
-                    image={product1?.media.source}
-                  />
-                </Grid>
-              </Hidden>
-              <Grid
-                item
-                xs={12}
-                md={4}
-                sm={6}
-                component={Card}
-                className={classes.card}
-              >
-                <CardContent className={classes.cardContent}>
-                  <Typography variant='h6'>{product2?.name}</Typography>
-                </CardContent>
-                <CardMedia
-                  component={Link}
-                  to='/store'
-                  className={classes.media}
-                  image={product2?.media.source}
-                />
-              </Grid>
-              <Hidden xsDown>
+
+          <Paper
+            elevation={8}
+            style={{ margin: 0, padding: 0, width: 'calc(100% - 1px)' }}
+          >
+            <Carousel indicators={false} navButtonsAlwaysVisible={true}>
+              <Grid container>
+                <Hidden smDown>
+                  <Grid item md={4} component={Card} className={classes.card}>
+                    <CardContent className={classes.cardContent}>
+                      <Typography variant='h6'>{product1?.name}</Typography>
+                    </CardContent>
+                    <CardMedia
+                      component={Link}
+                      to='/store'
+                      className={classes.media}
+                      image={product1?.media.source}
+                    />
+                  </Grid>
+                </Hidden>
                 <Grid
                   item
-                  sm={6}
+                  xs={12}
                   md={4}
+                  sm={6}
                   component={Card}
                   className={classes.card}
                 >
                   <CardContent className={classes.cardContent}>
-                    <Typography variant='h6'>{product3?.name}</Typography>
+                    <Typography variant='h6'>{product2?.name}</Typography>
                   </CardContent>
                   <CardMedia
                     component={Link}
                     to='/store'
                     className={classes.media}
-                    image={product3?.media.source}
+                    image={product2?.media.source}
                   />
                 </Grid>
-              </Hidden>
-            </Grid>
-            <Grid container>
-              <Hidden smDown>
-                <Grid item md={4} component={Card} className={classes.card}>
-                  <CardContent className={classes.cardContent}>
-                    <Typography variant='h6'>{product4?.name}</Typography>
-                  </CardContent>
-                  <CardMedia
-                    component={Link}
-                    to='/store'
-                    className={classes.media}
-                    image={product4?.media.source}
-                  />
-                </Grid>
-              </Hidden>
-              <Grid
-                item
-                xs={12}
-                md={4}
-                sm={6}
-                component={Card}
-                className={classes.card}
-              >
-                <CardContent className={classes.cardContent}>
-                  <Typography variant='h6'>{product5?.name}</Typography>
-                </CardContent>
-                <CardMedia
-                  component={Link}
-                  to='/store'
-                  className={classes.media}
-                  image={product5?.media.source}
-                />
+                <Hidden xsDown>
+                  <Grid
+                    item
+                    sm={6}
+                    md={4}
+                    component={Card}
+                    className={classes.card}
+                  >
+                    <CardContent className={classes.cardContent}>
+                      <Typography variant='h6'>{product3?.name}</Typography>
+                    </CardContent>
+                    <CardMedia
+                      component={Link}
+                      to='/store'
+                      className={classes.media}
+                      image={product3?.media.source}
+                    />
+                  </Grid>
+                </Hidden>
               </Grid>
-              <Hidden xsDown>
+              <Grid container>
+                <Hidden smDown>
+                  <Grid item md={4} component={Card} className={classes.card}>
+                    <CardContent className={classes.cardContent}>
+                      <Typography variant='h6'>{product4?.name}</Typography>
+                    </CardContent>
+                    <CardMedia
+                      component={Link}
+                      to='/store'
+                      className={classes.media}
+                      image={product4?.media.source}
+                    />
+                  </Grid>
+                </Hidden>
                 <Grid
                   item
-                  sm={6}
+                  xs={12}
                   md={4}
+                  sm={6}
                   component={Card}
                   className={classes.card}
                 >
                   <CardContent className={classes.cardContent}>
-                    <Typography variant='h6'>{product6?.name}</Typography>
+                    <Typography variant='h6'>{product5?.name}</Typography>
                   </CardContent>
                   <CardMedia
                     component={Link}
                     to='/store'
                     className={classes.media}
-                    image={product6?.media.source}
+                    image={product5?.media.source}
                   />
                 </Grid>
-              </Hidden>
-            </Grid>
-          </Carousel>
+                <Hidden xsDown>
+                  <Grid
+                    item
+                    sm={6}
+                    md={4}
+                    component={Card}
+                    className={classes.card}
+                  >
+                    <CardContent className={classes.cardContent}>
+                      <Typography variant='h6'>{product6?.name}</Typography>
+                    </CardContent>
+                    <CardMedia
+                      component={Link}
+                      to='/store'
+                      className={classes.media}
+                      image={product6?.media.source}
+                    />
+                  </Grid>
+                </Hidden>
+              </Grid>
+            </Carousel>
+          </Paper>
         </Container>
       </Grid>
     </Grid>

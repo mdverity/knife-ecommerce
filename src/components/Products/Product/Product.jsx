@@ -40,7 +40,7 @@ const Product = ({ product, onAddToCart }) => {
 
   return (
     <>
-      <Card className={classes.root}>
+      <Card className={classes.root} raised>
         <Carousel autoPlay={false} navButtonsAlwaysVisible>
           {productImages.map((item, i) => (
             <CardMedia
