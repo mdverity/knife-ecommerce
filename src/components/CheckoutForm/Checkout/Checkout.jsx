@@ -66,6 +66,10 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
             Thank you for your purchase, {order.customer.firstname}.
           </Typography>
           <Divider className={classes.divider} />
+          <Typography gutterBottom variant='subtitle1'>
+            We've sent a reciept of your order to:{' '}
+            <span style={{ fontWeight: 500 }}>{order.customer.email}</span>
+          </Typography>
           <Typography variant='subtitle2'>
             Order number: {order.customer_reference}
           </Typography>
@@ -90,7 +94,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
       </>
     ) : (
       <div className={classes.spinner}>
-        <CircularProgress />
+        <CircularProgress color='secondary' />
       </div>
     )
 
