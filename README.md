@@ -1,11 +1,34 @@
+## Stripe Test Card Information
+
+Everything is still set up within Stripe and Commerce.js's testing environment(s).
+No products are actually purchased, nor inventory held.
+
+You can use Stripe's basic test cards to make purchases:
+
+| Card Number         | Card Type        | CVC          | Exp.            |
+| ------------------- | ---------------- | ------------ | --------------- |
+| 4242 4242 4242 4242 | Visa             | Any 3 digits | Any future date |
+| 5555 5555 5555 4444 | Mastercard       | Any 3 digits | Any future date |
+| 3782 822463 10005   | American Express | Any 4 digits | Any future date |
+| 6011 1111 1111 1117 | Discover         | Any 3 digits | Any future date |
+
+<br/>
+
+[Click here](https://stripe.com/docs/testing#cards) to view more card options and information.
+<br/>
+
 # Quick start
+
+> Items starting with # are simply comments and should be ignored.
 
 1.  **Clone the repo.**
 
     Clone the repo into the directory of your choice.
 
     ```
-    cd <directory_of_choice>
+    # Or create one with 'mkdir' instead of 'cd'
+
+    cd <directory_of_your_choice>
     git clone https://github.com/mdverity/knife-ecommerce.git
     ```
 
@@ -27,13 +50,15 @@
 
 3.  **Open the source code and start editing!**
 
-    Start up your development server with NPM.
+        Start up your development server with NPM.
 
-    ```
-    npm start
-    ```
+        ```
+        npm start
+        ```
 
-    Your site is now live, running at `http://localhost:3000`.
+        Your site is now live, running at `http://localhost:3000`.
+
+    <br/>
 
 ## Available Scripts
 
@@ -73,32 +98,39 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<br/>
 
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+<br/>
 
 ### Code Splitting
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<br/>
 
 ### Analyzing the Bundle Size
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<br/>
 
 ### Making a Progressive Web App
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<br/>
 
 ### Advanced Configuration
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<br/>
 
 ### Deployment
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<br/>
 
 ### `npm run build` fails to minify
 
