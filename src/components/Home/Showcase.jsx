@@ -25,9 +25,9 @@ const Showcase = () => {
           >
             <Typography
               variant='h3'
-              color='primary'
+              // color='primary'
               align='center'
-              style={{ paddingTop: '1.5rem', height: '20%' }}
+              style={{ paddingTop: '2rem', height: '20%', color: '#e9e9e9' }}
             >
               Why Knifty?
             </Typography>
@@ -35,10 +35,11 @@ const Showcase = () => {
               //   alignItems='center'
               style={{
                 height: '80%',
+                width: '90%',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                padding: '2rem 1rem',
+                padding: '4rem 1rem',
               }}
             >
               <Typography
@@ -65,8 +66,8 @@ const Showcase = () => {
                 color='primary'
                 className={classes.showcaseText}
               >
-                All of our knives are hand crafted in Japan, made by a true
-                master of their craft.
+                All of our knives are handmade in Japan, forged by a true master
+                of their craft.
               </Typography>
 
               <div
@@ -84,7 +85,7 @@ const Showcase = () => {
                 color='primary'
                 className={classes.showcaseText}
               >
-                With a 60-day money back guarantee, there’s no risk to try the
+                With a 30-day money back guarantee, there’s no risk to try the
                 best knife of your life.
               </Typography>
             </Container>
@@ -95,6 +96,7 @@ const Showcase = () => {
               height: '40vh',
               display: 'grid',
               placeItems: 'center',
+              // background: '#DAECE7',
               boxShadow: 'inset 0px 4px 100px 20px rgba(0, 0, 0, 0.25)',
             }}
             background='primary'
@@ -109,7 +111,7 @@ const Showcase = () => {
                 align='center'
                 style={{ paddingTop: '1rem' }}
               >
-                'Cause Knife.
+                Learn More
               </Typography>
               <Button
                 component={Link}
@@ -124,7 +126,7 @@ const Showcase = () => {
                 variant='h6'
                 color='secondary'
                 align='center'
-                style={{}}
+                style={{ fontWeight: '400' }}
               >
                 for your new favorite knife!
               </Typography>

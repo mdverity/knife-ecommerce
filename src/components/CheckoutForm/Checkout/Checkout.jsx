@@ -100,8 +100,8 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
         <Typography variant='h5'>Looks like we ran into an error.</Typography>
         <Typography variant='h6'>{error}.</Typography>
         <br />
-        <Button component={Link} variant='outlined' type='button' to='/'>
-          Back to home
+        <Button component={Link} variant='outlined' type='button' to='/cart'>
+          Back to Cart
         </Button>
       </>
     )

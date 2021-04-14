@@ -16,7 +16,13 @@ function FormInput({ name, label }) {
         defaultValue=''
         error={isError}
         render={({ field }) => (
-          <TextField required name={name} label={label} {...field} />
+          <TextField
+            required
+            name={name}
+            color='secondary'
+            label={label}
+            {...field}
+          />
         )}
       />
     </Grid>

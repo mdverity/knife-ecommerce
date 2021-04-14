@@ -1,36 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useStyles from './styles'
 import { Grid, Typography, Button, TextField } from '@material-ui/core'
-import { fade, makeStyles } from '@material-ui/core/styles'
+
+const encode = (data) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
 
 const Hero = () => {
   const classes = useStyles()
+  const [email, setEmail] = useState('')
 
-  const useStylesInput = makeStyles((theme) => ({
-    root: {
-      border: '1px solid #e2e2e1',
-      overflow: 'hidden',
-      borderRadius: 4,
-      backgroundColor: '#DAECE7',
-      transition: theme.transitions.create(['border-color', 'box-shadow']),
-      '&:hover': {
-        backgroundColor: '#e9e9e9',
-      },
-      '&$focused': {
-        backgroundColor: '#B8C6C8',
-        boxShadow: `${fade(theme.palette.text.primary, 0.25)} 0 0 0 2px`,
-        borderColor: theme.palette.text.primary,
-      },
-    },
-    focused: {},
-  }))
+  const handleSubmit = (event) => {
+    event.preventDefault()
 
-  function CustomTextField(props) {
-    const classes = useStylesInput()
-
-    return (
-      <TextField InputProps={{ classes, disableUnderline: true }} {...props} />
-    )
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'hero-signup', email }),
+    })
+      .then(() => {
+        setEmail('')
+        alert('Thanks! We added you to our newsletter.')
+      })
+      .catch((err) => console.log(err))
   }
 
   return (
@@ -97,7 +91,11 @@ const Hero = () => {
               width: '100%',
             }}
           >
-            <form className={classes.rootInput} autoComplete='off'>
+            <form
+              className={`${classes.rootInput} netlify`}
+              onSubmit={handleSubmit}
+            >
+              <input type='hidden' name='form-name' value='hero-signup' />
               <Typography
                 variant='h5'
                 color='primary'
@@ -119,19 +117,26 @@ const Hero = () => {
                 </span>
                 !
               </Typography>
-              <CustomTextField
-                label='Your Email'
+              <TextField
                 type='email'
-                className={classes.emailInput}
+                label='Your Email'
                 variant='filled'
-                id='hero-email-input'
-                // minWidth='50%'
+                className={classes.emailInput}
+                name='hero-email'
+                id='hero-email'
+                margin='dense'
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                InputProps={{
+                  style: { background: '#DAECE7' },
+                }}
                 InputLabelProps={{
                   style: { color: '#1D282A' },
                 }}
               />
               <Button
                 variant='contained'
+                type='submit'
                 style={{ marginInline: 'auto', marginTop: '1rem' }}
                 color='primary'
               >

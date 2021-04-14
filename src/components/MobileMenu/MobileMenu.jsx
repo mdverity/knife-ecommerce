@@ -12,7 +12,8 @@ import useStyles from './styles'
 
 const MobileMenu = ({ navLinks }) => {
   const classes = useStyles()
-  const [state, setState] = useState({ right: false }) // Add this
+  const [state, setState] = useState({ right: false })
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === 'keydown' &&
@@ -60,42 +61,6 @@ const MobileMenu = ({ navLinks }) => {
       >
         {sideDrawerList('right')}
       </Drawer>
-
-      {/* <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      {navLinks.map(({ title, path }) => (
-        <MenuItem key={title}>
-          <Typography
-            component={NavLink}
-            to={path}
-            className={classes.menuItem}
-          >
-            {title}
-          </Typography>
-        </MenuItem>
-      ))}
-
-      <MenuItem>
-        <IconButton
-          component={NavLink}
-          to='/cart'
-          aria-label='Show cart items'
-          color='inherit'
-        >
-          <Badge badgeContent={totalItems} color='primary'>
-            <ShoppingCart />
-          </Badge>
-        </IconButton>
-        <p>Cart</p>
-      </MenuItem>
-    </Menu> */}
     </>
   )
 }

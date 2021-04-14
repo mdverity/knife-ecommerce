@@ -81,6 +81,7 @@ export default makeStyles((theme) => ({
     position: 'absolute',
     opacity: '0.5',
     fontWeight: '400',
+    whiteSpace: 'nowrap',
 
     [theme.breakpoints.down('xs')]: {
       left: '2%',
@@ -140,6 +141,9 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       fontSize: '18px',
     },
+    [theme.breakpoints.down('md')]: {
+      fontSize: '28px',
+    },
   },
 
   headerTextWrap: {
@@ -148,16 +152,21 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       marginTop: '2.5rem',
     },
+    [theme.breakpoints.down('lg')]: {
+      paddingRight: '5px',
+    },
   },
 
   topHeaderWrap: {
     background: '#DAECE7',
-    boxShadow: 'inset 0px 4px 100px 20px rgba(0, 0, 0, 0.25)',
+    // boxShadow: 'inset 0px 4px 100px 20px rgba(0, 0, 0, 0.25)',
     position: 'relative',
     display: 'flex',
+    overflowX: 'hidden',
 
     [theme.breakpoints.down('sm')]: {
       height: 'fit-content',
+      minHeight: '40vh',
     },
     [theme.breakpoints.up('md')]: {
       height: '60vh',
@@ -196,11 +205,14 @@ export default makeStyles((theme) => ({
     zIndex: '3',
     background: 'rgba(29, 40, 42, 0.5)',
     width: '100%',
+    textAlign: 'center',
+    color: '#e9e9e9',
   },
 
   showcaseText: {
     [theme.breakpoints.down('xs')]: {
       fontSize: '14px',
+      paddingBlock: '.5rem',
     },
   },
 }))

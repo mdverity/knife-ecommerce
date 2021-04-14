@@ -30,27 +30,37 @@ const HomeCarousel = ({ products }) => {
         item
         xs={12}
         style={{
-          height: '60vh',
-          background: '#DAECE7',
-          boxShadow: 'inset 0px 4px 100px 20px rgba(0, 0, 0, 0.25)',
+          // height: 'fit-content',
+          display: 'flex',
+          minHeight: '80vh',
+          background: '#e9e9e9',
+          // boxShadow: 'inset 0px 4px 100px 20px rgba(0, 0, 0, 0.25)',
+          paddingBottom: '1rem',
+          alignItems: 'center',
         }}
       >
         <Container
           style={{
             display: 'grid',
             placeItems: 'center',
-            height: '100%',
+            height: '80%',
             width: '100%',
           }}
         >
-          <Carousel>
+          <Typography
+            variant='h3'
+            color='secondary'
+            // style={{ fontWeight: '400' }}
+            gutterBottom
+          >
+            Latest Products
+          </Typography>
+          <Carousel indicators={false} navButtonsAlwaysVisible={true}>
             <Grid container>
               <Hidden smDown>
                 <Grid item md={4} component={Card} className={classes.card}>
                   <CardContent className={classes.cardContent}>
-                    <Typography variant='h6' color='primary'>
-                      {product1?.name}
-                    </Typography>
+                    <Typography variant='h6'>{product1?.name}</Typography>
                   </CardContent>
                   <CardMedia
                     component={Link}
@@ -69,9 +79,7 @@ const HomeCarousel = ({ products }) => {
                 className={classes.card}
               >
                 <CardContent className={classes.cardContent}>
-                  <Typography variant='h6' color='primary'>
-                    {product2?.name}
-                  </Typography>
+                  <Typography variant='h6'>{product2?.name}</Typography>
                 </CardContent>
                 <CardMedia
                   component={Link}
@@ -89,9 +97,7 @@ const HomeCarousel = ({ products }) => {
                   className={classes.card}
                 >
                   <CardContent className={classes.cardContent}>
-                    <Typography variant='h6' color='primary'>
-                      {product3?.name}
-                    </Typography>
+                    <Typography variant='h6'>{product3?.name}</Typography>
                   </CardContent>
                   <CardMedia
                     component={Link}
@@ -106,9 +112,7 @@ const HomeCarousel = ({ products }) => {
               <Hidden smDown>
                 <Grid item md={4} component={Card} className={classes.card}>
                   <CardContent className={classes.cardContent}>
-                    <Typography variant='h6' color='primary'>
-                      {product4?.name}
-                    </Typography>
+                    <Typography variant='h6'>{product4?.name}</Typography>
                   </CardContent>
                   <CardMedia
                     component={Link}
@@ -127,9 +131,7 @@ const HomeCarousel = ({ products }) => {
                 className={classes.card}
               >
                 <CardContent className={classes.cardContent}>
-                  <Typography variant='h6' color='primary'>
-                    {product5?.name}
-                  </Typography>
+                  <Typography variant='h6'>{product5?.name}</Typography>
                 </CardContent>
                 <CardMedia
                   component={Link}
@@ -147,9 +149,7 @@ const HomeCarousel = ({ products }) => {
                   className={classes.card}
                 >
                   <CardContent className={classes.cardContent}>
-                    <Typography variant='h6' color='primary'>
-                      {product6?.name}
-                    </Typography>
+                    <Typography variant='h6'>{product6?.name}</Typography>
                   </CardContent>
                   <CardMedia
                     component={Link}

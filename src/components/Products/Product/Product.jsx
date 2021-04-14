@@ -9,7 +9,7 @@ import {
   Dialog,
   Popover,
 } from '@material-ui/core'
-import { AddShoppingCart } from '@material-ui/icons'
+import { AddShoppingCart, ZoomOutMap } from '@material-ui/icons'
 import useStyles from './styles'
 import Carousel from 'react-material-ui-carousel'
 
@@ -41,15 +41,19 @@ const Product = ({ product, onAddToCart }) => {
   return (
     <>
       <Card className={classes.root}>
-        <Carousel autoPlay={false}>
+        <Carousel autoPlay={false} navButtonsAlwaysVisible>
           {productImages.map((item, i) => (
             <CardMedia
               key={product.name + i}
               className={classes.media}
               image={item}
               title={product.name}
-              onClick={handleOpenModal}
-            />
+            >
+              <ZoomOutMap
+                className={classes.zoomIcon}
+                onClick={handleOpenModal}
+              />
+            </CardMedia>
           ))}
         </Carousel>
         <CardContent>
@@ -104,7 +108,7 @@ const Product = ({ product, onAddToCart }) => {
         maxWidth='lg'
         className={classes.dialog}
       >
-        <Carousel autoPlay={false}>
+        <Carousel autoPlay={false} indicators={false}>
           {productImages.map((item, i) => (
             <img
               key={product.name}

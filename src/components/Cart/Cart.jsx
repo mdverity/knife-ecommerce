@@ -70,7 +70,7 @@ const Cart = ({
   )
 
   return (
-    <Container>
+    <Container style={{ marginBottom: '2rem' }}>
       <div className={classes.toolbar} />
       <Typography className={classes.title} variant='h3' gutterBottom>
         Your Cart

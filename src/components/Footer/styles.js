@@ -52,13 +52,14 @@ export default makeStyles((theme) => ({
   tweetBox: {
     height: 'fit-content',
     padding: '10px',
-    paddingRight: '20px',
 
     [theme.breakpoints.down('sm')]: {
       marginBlock: '3rem',
+      paddingRight: '0',
     },
     [theme.breakpoints.up('md')]: {
       marginBlock: '0',
+      paddingRight: '20px',
     },
   },
 
@@ -71,6 +72,29 @@ export default makeStyles((theme) => ({
     },
     [theme.breakpoints.up('md')]: {
       marginTop: '0',
+    },
+  },
+
+  formWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: '0',
+    },
+    [theme.breakpoints.up('md')]: {
+      marginLeft: '10px',
+    },
+  },
+
+  footerForm: {
+    display: 'flex',
+    flexDirection: 'column',
+
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      maxWidth: '500px',
+      marginInline: 'auto',
     },
   },
 }))

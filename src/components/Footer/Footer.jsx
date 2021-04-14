@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Grid,
   Typography,
@@ -8,36 +8,30 @@ import {
 } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import useStyles from './styles'
-import { fade, makeStyles } from '@material-ui/core/styles'
+
+const encode = (data) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
 
 const Footer = ({ products }) => {
   const classes = useStyles()
+  const [email, setEmail] = useState('')
 
-  const useStylesInput = makeStyles((theme) => ({
-    root: {
-      border: '1px solid #e2e2e1',
-      overflow: 'hidden',
-      borderRadius: 4,
-      backgroundColor: '#DAECE7',
-      transition: theme.transitions.create(['border-color', 'box-shadow']),
-      '&:hover': {
-        backgroundColor: '#e9e9e9',
-      },
-      '&$focused': {
-        backgroundColor: '#B8C6C8',
-        boxShadow: `${fade(theme.palette.text.primary, 0.25)} 0 0 0 2px`,
-        borderColor: theme.palette.text.primary,
-      },
-    },
-    focused: {},
-  }))
+  const handleSubmit = (event) => {
+    event.preventDefault()
 
-  function CustomTextField(props) {
-    const classes = useStylesInput()
-
-    return (
-      <TextField InputProps={{ classes, disableUnderline: true }} {...props} />
-    )
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'footer-signup', email }),
+    })
+      .then(() => {
+        setEmail('')
+        alert('Thanks! We added you to our newsletter.')
+      })
+      .catch((err) => console.log(err))
   }
 
   return (
@@ -55,7 +49,7 @@ const Footer = ({ products }) => {
         direction='row'
         justify='center'
         // alignItems='center'
-        style={{ marginTop: '2rem' }}
+        style={{ marginTop: '5rem' }}
         // spacing={4}
       >
         <Grid
@@ -65,7 +59,7 @@ const Footer = ({ products }) => {
           style={{ height: 'fit-content', padding: '10px' }}
         >
           <Grid container direction='column' className={classes.footerList}>
-            <Typography variant='h6' color='primary'>
+            <Typography variant='h5' style={{ color: '#e9e9e9' }}>
               Navigation
             </Typography>
             <Link to='/store' className={classes.footerLink}>
@@ -89,7 +83,7 @@ const Footer = ({ products }) => {
           style={{ height: 'fit-content', padding: '10px' }}
         >
           <Grid container direction='column' className={classes.footerList}>
-            <Typography variant='h6' color='primary'>
+            <Typography variant='h5' style={{ color: '#e9e9e9' }}>
               Latest Products
             </Typography>
             {products.slice(0, 4).map((product, index) => (
@@ -101,7 +95,7 @@ const Footer = ({ products }) => {
         </Grid>
         <Grid item xs={10} md={3} className={classes.tweetBox}>
           <Grid container direction='column'>
-            <Typography variant='h6' color='primary'>
+            <Typography variant='h5' style={{ color: '#e9e9e9' }}>
               Latest Tweets
             </Typography>
             <br />
@@ -123,22 +117,35 @@ const Footer = ({ products }) => {
           style={{ height: 'fit-content', padding: '10px' }}
           className={classes.footerList}
         >
-          <Grid container direction='column'>
-            <Typography variant='h6' color='primary'>
+          <Grid container direction='column' className={classes.formWrapper}>
+            <Typography
+              variant='h6'
+              style={{ color: '#e9e9e9', fontWeight: '400' }}
+            >
               Sign up for
               <br />
               our newsletter:
             </Typography>
             <form
               autoComplete='off'
-              style={{ display: 'flex', flexDirection: 'column' }}
+              onSubmit={handleSubmit}
+              className={classes.footerForm}
+              // style={{ display: 'flex', flexDirection: 'column' }}
             >
-              <CustomTextField
-                label='Your Email'
+              <input type='hidden' name='form-name' value='footer-signup' />
+              <TextField
                 type='email'
-                className={classes.emailInput}
+                label='Your Email Address'
                 variant='filled'
-                id='footer-email-input'
+                className={classes.emailInput}
+                name='footer-email'
+                id='footer-email'
+                margin='dense'
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                InputProps={{
+                  style: { background: '#DAECE7' },
+                }}
                 InputLabelProps={{
                   style: { color: '#1D282A' },
                 }}
