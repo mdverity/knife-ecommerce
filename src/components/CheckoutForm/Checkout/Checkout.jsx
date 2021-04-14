@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { commerce } from '../../../lib/commerce'
+import { motion } from 'framer-motion'
 import useStyles from './styles'
 import AddressForm from '../AddressForm'
 import PaymentForm from '../PaymentForm'
@@ -126,10 +127,15 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
     )
 
   return (
-    <>
+    <motion.main
+      initial={{ x: 300, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -300, opacity: 0 }}
+      className={classes.content}
+    >
       <CssBaseline />
       <div className={classes.toolbar} />
-      <main className={classes.layout}>
+      <div className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography variant='h4' align='center'>
             Checkout
@@ -147,8 +153,8 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
             checkoutToken && <Form />
           )}
         </Paper>
-      </main>
-    </>
+      </div>
+    </motion.main>
   )
 }
 

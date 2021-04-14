@@ -1,5 +1,6 @@
 import React from 'react'
 import { Grid, Container } from '@material-ui/core'
+import { motion } from 'framer-motion'
 import Product from './Product/Product'
 import useStyles from './styles'
 
@@ -7,7 +8,12 @@ const Products = ({ products, onAddToCart }) => {
   const classes = useStyles()
 
   return (
-    <main className={classes.content}>
+    <motion.main
+      initial={{ x: 300, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -300, opacity: 0 }}
+      className={classes.content}
+    >
       <div className={classes.toolbar} />
       {/* <Grid container fluid style={{padding: '0'}}></Grid> */}
       <Container>
@@ -19,7 +25,7 @@ const Products = ({ products, onAddToCart }) => {
           ))}
         </Grid>
       </Container>
-    </main>
+    </motion.main>
   )
 }
 

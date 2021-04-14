@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { commerce } from './lib/commerce'
 import { CssBaseline } from '@material-ui/core'
+import { AnimatePresence } from 'framer-motion'
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useLocation,
+} from 'react-router-dom'
+
 import {
   Products,
   Navbar,
@@ -9,19 +18,14 @@ import {
   Home,
   About,
   Contact,
+  Footer,
 } from './components'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useLocation,
-} from 'react-router-dom'
+
 import {
   ThemeProvider,
   createMuiTheme,
   responsiveFontSizes,
 } from '@material-ui/core/styles'
-import Footer from './components/Footer/Footer'
 
 let theme = createMuiTheme({
   typography: {
@@ -133,41 +137,43 @@ const App = () => {
           totalItems={cart.total_items}
           handleDrawerToggle={handleDrawerToggle}
         />
-        <Switch>
-          <Route exact path='/'>
-            <Home products={products} />
-          </Route>
+        <AnimatePresence>
+          <Switch>
+            <Route exact path='/'>
+              <Home products={products} />
+            </Route>
 
-          <Route path='/about'>
-            <About products />
-          </Route>
+            <Route path='/about'>
+              <About products />
+            </Route>
 
-          <Route path='/contact'>
-            <Contact />
-          </Route>
+            <Route path='/contact'>
+              <Contact />
+            </Route>
 
-          <Route exact path='/store'>
-            <Products products={products} onAddToCart={handleAddToCart} />
-          </Route>
+            <Route exact path='/store'>
+              <Products products={products} onAddToCart={handleAddToCart} />
+            </Route>
 
-          <Route exact path='/cart'>
-            <Cart
-              cart={cart}
-              handleUpdateCartQty={handleUpdateCartQty}
-              handleRemoveFromCart={handleRemoveFromCart}
-              handleEmptyCart={handleEmptyCart}
-            />
-          </Route>
+            <Route exact path='/cart'>
+              <Cart
+                cart={cart}
+                handleUpdateCartQty={handleUpdateCartQty}
+                handleRemoveFromCart={handleRemoveFromCart}
+                handleEmptyCart={handleEmptyCart}
+              />
+            </Route>
 
-          <Route exact path='/checkout'>
-            <Checkout
-              cart={cart}
-              order={order}
-              onCaptureCheckout={handleCaptureCheckout}
-              error={errorMessage}
-            />
-          </Route>
-        </Switch>
+            <Route exact path='/checkout'>
+              <Checkout
+                cart={cart}
+                order={order}
+                onCaptureCheckout={handleCaptureCheckout}
+                error={errorMessage}
+              />
+            </Route>
+          </Switch>
+        </AnimatePresence>
         <Footer products={products} />
       </ThemeProvider>
     </Router>

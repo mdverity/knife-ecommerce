@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Typography, Button, Grid } from '@material-ui/core'
+import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import useStyles from './styles.js'
 import CartItem from './CartItem/CartItem'
@@ -71,11 +72,17 @@ const Cart = ({
 
   return (
     <Container style={{ marginBottom: '2rem' }}>
-      <div className={classes.toolbar} />
-      <Typography className={classes.title} variant='h3' gutterBottom>
-        Your Cart
-      </Typography>
-      {!cart.line_items.length ? <EmptyCart /> : <FilledCart />}
+      <motion.div
+        initial={{ x: 300, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: -300, opacity: 0 }}
+      >
+        <div className={classes.toolbar} />
+        <Typography className={classes.title} variant='h3' gutterBottom>
+          Your Cart
+        </Typography>
+        {!cart.line_items.length ? <EmptyCart /> : <FilledCart />}
+      </motion.div>
     </Container>
   )
 }

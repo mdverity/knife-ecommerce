@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import useStyles from './styles'
+import { motion } from 'framer-motion'
 import {
   Container,
   Typography,
@@ -52,7 +53,12 @@ const Contact = () => {
   }
 
   return (
-    <main className={classes.content}>
+    <motion.main
+      initial={{ x: 300, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -300, opacity: 0 }}
+      className={classes.content}
+    >
       <div className={classes.toolbar} />
       <Container>
         <Typography
@@ -136,7 +142,7 @@ const Contact = () => {
           </Grid>
         </form>
       </Container>
-    </main>
+    </motion.main>
   )
 }
 
